@@ -1,0 +1,44 @@
+[project]
+name = "ft_test"
+version = "0.1.0"
+requires-python = ">=3.11,<3.14"
+description = "ICD and HCC code prediction from medical PDFs"
+readme = "readme.md"
+authors = [
+    { name = "Abhinav Chawade", email = "abhinav@getboosted.io"},
+    { name = "Boosted Technology" }
+]
+
+dependencies = [
+    "accelerate",
+    "duckdb",
+    "fastapi",
+    "fireducks",
+    "hypercorn",
+    "litellm>=1.26.0",
+    "numpy",
+    "pdfplumber",
+    "peft",
+    "python-multipart",
+    "pyyaml",
+    "scikit-learn",
+    "torch>=2.0.0",
+    "tqdm",
+    "transformers>=4.34.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "pre-commit",
+    "pytest",
+    "pytest-cov"
+]
+
+[build-system]
+requires = ["setuptools>=67.8.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.codespell]
+skip = '.git,*.pdf,*.svg'

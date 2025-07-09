@@ -1,0 +1,55 @@
+# Inference Configuration
+
+# Model configuration
+inference:
+  # Path to the fine-tuned model
+  model_path: "output/medical_coder_model"
+
+  # Model name and version
+  model_name: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+  model_version: "v1.0"
+
+  # Device to run inference on (cuda or cpu)
+  device: "auto"  # Will be determined at runtime based on availability
+
+  # Inference parameters
+  max_length: 512
+  temperature: 0.1
+  top_p: 0.9
+
+  # Sample code descriptions (would be expanded in a real implementation)
+  code_descriptions:
+    "ICD-10:E11.9": "Type 2 diabetes mellitus without complications"
+    "ICD-10:I10": "Essential (primary) hypertension"
+    "ICD-10:E78.5": "Hyperlipidemia, unspecified"
+    "ICD-10:J44.9": "Chronic obstructive pulmonary disease, unspecified"
+    "ICD-10:F41.9": "Anxiety disorder, unspecified"
+
+# API configuration
+api:
+  # Host and port for the API server
+  host: "0.0.0.0"
+  port: 8000
+
+  # CORS settings
+  cors_origins: ["*"]
+
+  # Rate limiting
+  rate_limit: 100  # requests per minute
+
+  # Timeout settings
+  timeout: 30  # seconds
+
+# Logging configuration
+logging:
+  # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+
+  # Log file path (if empty, logs to console only)
+  file: "logs/inference.log"
+
+  # Whether to log to console
+  console: true
+
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

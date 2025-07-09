@@ -1,0 +1,72 @@
+# Training Configuration
+
+# Model configuration
+model:
+  # Base model name
+  model_name: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+  
+  # LoRA parameters
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  
+  # Training parameters
+  learning_rate: 2e-4
+  batch_size: 4
+  max_length: 512
+  gradient_accumulation_steps: 4
+
+# Training configuration
+training:
+  # Number of training epochs
+  epochs: 3
+  
+  # Steps for saving, evaluation, and logging
+  save_steps: 100
+  eval_steps: 50
+  logging_steps: 10
+  warmup_steps: 100
+  
+  # Checkpoint configuration
+  save_checkpoint_epochs: 1  # Save checkpoint after every epoch
+  checkpoint_dir: ""  # If empty, will use a subdirectory of output_dir
+  
+  # Output directory for saving the model
+  output_dir: "output/medical_coder_model"
+  
+  # Device to run training on
+  device: "auto"  # Will be determined at runtime based on availability
+
+# Data configuration
+data:
+  # Dataset version (mimic-iii or mimic-iv)
+  dataset_version: "mimic-iv"
+
+  # Path to the DuckDB database file (used by prepare_tokens.py)
+  dataset_path: "/Users/ripplingadmin/datasets/mimic-iv-splits/mimic-dataset.duckdb"
+  
+  # Directory containing tokenized datasets (used by train.py)
+  tokens_dir: "data/tokens"
+
+  # Number of samples to process from the dataset (min: 10, max: all, default: 100)
+  num_samples: 100
+
+# Logging configuration
+logging:
+  # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  
+  # Log file path (if empty, logs to console only)
+  file: "logs/training.log"
+  
+  # Whether to log to console
+  console: true
+  
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Whether to log memory usage
+  log_memory: true
+  
+  # Memory logging interval (in steps)
+  memory_logging_steps: 10
